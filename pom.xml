@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>edu.stanford.protege</groupId>
+    <artifactId>protege-distribution</artifactId>
+    <packaging>pom</packaging>
+    <version>5.0.0-beta-18-SNAPSHOT</version>
+
+    <properties>
+        <!-- The version of Protege that we are targeting -->
+        <protege.version>5.0.0-beta-18-SNAPSHOT</protege.version>
+
+        <!--
+        The directory name for a distribution.  This is the directory that a user copies to the location
+        where they want to install Protege.
+        -->
+        <protege.directory>Protege-${protege.version}</protege.directory>
+
+        <!-- The directory where the OS X distribution should be assembled -->
+        <os-x.directory>${protege.directory}-os-x</os-x.directory>
+
+        <!-- The directory where the Linux distribution should be assembled -->
+        <linux.directory>${protege.directory}-linux</linux.directory>
+
+        <!-- The directory where the Windows distribution should be assembled -->
+        <win.directory>${protege.directory}-win</win.directory>
+
+        <!-- The directory where the Platform Independent distribution should be assembled -->
+        <platform-independent.directory>${protege.directory}-platform-independent</platform-independent.directory>
+    </properties>
+
+    <!--
+    Plugins that are included in the distribution are listed as dependencies.
+    All dependencies get copied to the plugins folder.
+    -->
+
+    <dependencies>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>ca.uvic.cs.chisel.cajun</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>org.coode.dlquery</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>org.coode.owlviz</artifactId>
+            <version>4.1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>org.protege.editor.owl.codegeneration</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>org.protege.editor.owl.diff</artifactId>
+            <version>5.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>org.protege.editor.owl.rdf</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>org.protege.explanation</artifactId>
+            <version>2.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>org.protege.integration.hermit</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>org.protege.ontograf</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>org.protege.owl.diff</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>org.protege.owl.rdf</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
+    </dependencies>
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+
+                    <!-- OS X -->
+                    <execution>
+                        <id>unpack-os-x</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>edu.stanford.protege</groupId>
+                                    <artifactId>protege-desktop</artifactId>
+                                    <version>${protege.version}</version>
+                                    <classifier>os-x</classifier>
+                                    <type>zip</type>
+                                    <outputDirectory>${project.build.directory}/${os-x.directory}</outputDirectory>
+                                    <overWrite>true</overWrite>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+
+
+                    <execution>
+                        <id>copy-plugins-ox-x</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/${os-x.directory}/${protege.directory}/plugins
+                            </outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <excludeTransitive>true</excludeTransitive>
+                        </configuration>
+                    </execution>
+
+                    <!-- Linux -->
+
+                    <execution>
+                        <id>unpack-linux</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>edu.stanford.protege</groupId>
+                                    <artifactId>protege-desktop</artifactId>
+                                    <version>${protege.version}</version>
+                                    <classifier>linux</classifier>
+                                    <type>tar.gz</type>
+                                    <outputDirectory>${project.build.directory}/${linux.directory}</outputDirectory>
+                                    <overWrite>true</overWrite>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>copy-plugins-linux</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/${linux.directory}/${protege.directory}/plugins
+                            </outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <excludeTransitive>true</excludeTransitive>
+                        </configuration>
+                    </execution>
+
+
+                    <!-- Windows -->
+
+                    <execution>
+                        <id>unpack-win</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>edu.stanford.protege</groupId>
+                                    <artifactId>protege-desktop</artifactId>
+                                    <version>${protege.version}</version>
+                                    <classifier>win</classifier>
+                                    <type>zip</type>
+                                    <outputDirectory>${project.build.directory}/${win.directory}</outputDirectory>
+                                    <overWrite>true</overWrite>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>copy-plugins-win</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/${win.directory}/${protege.directory}/plugins
+                            </outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <excludeTransitive>true</excludeTransitive>
+                        </configuration>
+                    </execution>
+
+                    <!-- Platform Independent -->
+
+                    <execution>
+                        <id>unpack-platform-independent</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>edu.stanford.protege</groupId>
+                                    <artifactId>protege-desktop</artifactId>
+                                    <version>${protege.version}</version>
+                                    <classifier>platform-independent</classifier>
+                                    <type>zip</type>
+                                    <outputDirectory>${project.build.directory}/${platform-independent.directory}</outputDirectory>
+                                    <overWrite>true</overWrite>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>copy-plugins-platform-independent</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/${platform-independent.directory}/${protege.directory}/plugins
+                            </outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <excludeTransitive>true</excludeTransitive>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
+
+
+            <!-- Assembly plugin to produce archives for various platforms and the platform independent version -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <finalName>${protege.directory}</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>create-os-x-archive</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptor>src/main/resources/os-x-assembly.xml</descriptor>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>create-linux-archive</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptor>src/main/resources/linux-assembly.xml</descriptor>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>create-win-archive</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptor>src/main/resources/win-assembly.xml</descriptor>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>create-platform-independent-archive</id>
+                        <configuration>
+                            <descriptor>src/main/resources/platform-independent-assembly.xml</descriptor>
+                        </configuration>
+                    </execution>
+                </executions>
+
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
+
