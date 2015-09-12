@@ -9,9 +9,68 @@
     <packaging>pom</packaging>
     <version>5.0.0-beta-18-SNAPSHOT</version>
 
+    <description>Protege is a free, open source ontology editor that supports the full OWL 2 standard.</description>
+    <url>http://protege.stanford.edu</url>
+    <inceptionYear>1987</inceptionYear>
+    <organization>
+        <name>Stanford Center for Biomedical Informatics Research</name>
+        <url>http://bmir.stanford.edu/</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>BSD 2-Clause License</name>
+            <url>http://opensource.org/licenses/BSD-2-Clause</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>matthewhorridge</id>
+            <name>Matthew Horridge</name>
+            <email>matthew.horridge@stanford.edu</email>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Nick Drummond</name>
+            <email>nickdrummond@yahoo.com</email>
+        </contributor>
+        <contributor>
+            <name>Csongor Nyulas</name>
+            <email>csongor.nyulas@stanford.edu</email>
+        </contributor>
+        <contributor>
+            <name>Timothy Redmond</name>
+            <email>tredmond@stanford.edu</email>
+        </contributor>
+        <contributor>
+            <name>Tania Tudorache</name>
+            <email>tudorache@stanford.edu</email>
+        </contributor>
+        <contributor>
+            <name>Jennifer Vendetti</name>
+            <email>vendetti@stanford.edu</email>
+        </contributor>
+    </contributors>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
     <properties>
-        <!-- The version of Protege that we are targeting -->
-        <protege.version>5.0.0-beta-18-SNAPSHOT</protege.version>
+        <!--
+        The version of Protege that we are targeting.  We set this to our project version.  The two should be in sync.
+        Note that we declare the oss-sonatype snapshot repository so that we can work with snapshots.
+        -->
+        <protege.version>${project.version}</protege.version>
 
         <!--
         The directory name for a distribution.  This is the directory that a user copies to the location
@@ -32,6 +91,18 @@
         <platform-independent.directory>${protege.directory}-platform-independent</platform-independent.directory>
     </properties>
 
+
+    <repositories>
+        <repository>
+            <id>oss-sonatype</id>
+            <name>oss-sonatype</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <!--
     Plugins that are included in the distribution are listed as dependencies.
     All dependencies get copied to the plugins folder.
@@ -48,7 +119,7 @@
         <dependency>
             <groupId>edu.stanford.protege</groupId>
             <artifactId>org.coode.dlquery</artifactId>
-            <version>2.0.1</version>
+            <version>2.0.2</version>
         </dependency>
 
         <dependency>
@@ -314,6 +385,10 @@
                     </execution>
                     <execution>
                         <id>create-platform-independent-archive</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
                         <configuration>
                             <descriptor>src/main/resources/platform-independent-assembly.xml</descriptor>
                         </configuration>
