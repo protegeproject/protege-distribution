@@ -7,7 +7,7 @@
     <groupId>edu.stanford.protege</groupId>
     <artifactId>protege-distribution</artifactId>
     <packaging>pom</packaging>
-    <version>5.0.0-beta-18-SNAPSHOT</version>
+    <version>5.0.0-beta-19</version>
 
     <description>Protege is a free, open source ontology editor that supports the full OWL 2 standard.</description>
     <url>http://protege.stanford.edu</url>
@@ -169,7 +169,7 @@
             <artifactId>ontograf</artifactId>
             <version>2.0.0</version>
         </dependency>
-        
+
     </dependencies>
 
 
