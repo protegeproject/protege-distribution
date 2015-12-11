@@ -130,8 +130,8 @@
 
         <dependency>
             <groupId>edu.stanford.protege</groupId>
-            <artifactId>org.protege.editor.owl.diff</artifactId>
-            <version>5.0.1</version>
+            <artifactId>owl-diff</artifactId>
+            <version>6.0.0</version>
         </dependency>
 
         <dependency>
