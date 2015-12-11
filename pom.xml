@@ -130,22 +130,22 @@
 
         <dependency>
             <groupId>edu.stanford.protege</groupId>
-            <artifactId>org.protege.editor.owl.codegeneration</artifactId>
-            <version>1.0.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>edu.stanford.protege</groupId>
             <artifactId>org.protege.editor.owl.diff</artifactId>
             <version>5.0.1</version>
         </dependency>
 
         <dependency>
             <groupId>edu.stanford.protege</groupId>
-            <artifactId>org.protege.editor.owl.rdf</artifactId>
-            <version>1.0.0</version>
+            <artifactId>rdf-library</artifactId>
+            <version>2.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>sparql-query-plugin</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        
         <dependency>
             <groupId>edu.stanford.protege</groupId>
             <artifactId>explanation-workbench</artifactId>
@@ -168,12 +168,6 @@
             <groupId>edu.stanford.protege</groupId>
             <artifactId>org.protege.owl.diff</artifactId>
             <version>2.0.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>edu.stanford.protege</groupId>
-            <artifactId>org.protege.owl.rdf</artifactId>
-            <version>1.0.2</version>
         </dependency>
 
     </dependencies>
