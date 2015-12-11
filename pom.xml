@@ -124,8 +124,8 @@
 
         <dependency>
             <groupId>edu.stanford.protege</groupId>
-            <artifactId>org.coode.owlviz</artifactId>
-            <version>4.1.4</version>
+            <artifactId>owlviz</artifactId>
+            <version>5.0.0</version>
         </dependency>
 
         <dependency>
