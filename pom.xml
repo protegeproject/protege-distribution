@@ -176,6 +176,12 @@
             <version>2.0.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>owldoc</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
     </dependencies>
 
 
