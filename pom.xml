@@ -182,6 +182,12 @@
             <version>3.0.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>edu.stanford.protege</groupId>
+            <artifactId>cellfie</artifactId>
+            <version>2.0.0-beta-6</version>
+        </dependency>
+
     </dependencies>
 
 
