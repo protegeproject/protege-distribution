@@ -178,6 +178,12 @@
             <version>2.0.0-beta-6</version>
         </dependency>
 
+        <dependency>
+            <groupId>edu.stanford.swrl</groupId>
+            <artifactId>swrltab-plugin</artifactId>
+            <version>1.0.0-beta-9</version>
+        </dependency>
+
     </dependencies>
 
 
