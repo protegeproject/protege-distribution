@@ -181,7 +181,7 @@
         <dependency>
             <groupId>edu.stanford.swrl</groupId>
             <artifactId>swrltab-plugin</artifactId>
-            <version>1.0.0-beta-19</version>
+            <version>1.0.0-beta-52</version>
         </dependency>
 
     </dependencies>
