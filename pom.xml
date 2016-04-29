@@ -7,14 +7,14 @@
     <groupId>edu.stanford.protege</groupId>
     <artifactId>protege-distribution</artifactId>
     <packaging>pom</packaging>
-    <version>5.0.0-beta-25-SNAPSHOT</version>
+    <version>5.0.0-RC1-SNAPSHOT</version>
 
     <properties>
         <!--
         The version of Protege that we are targeting.  We set this to our project version.  The two should be in sync.
         Note that we declare the oss-sonatype snapshot repository so that we can work with snapshots.
         -->
-        <protege.version>5.0.0-beta-25-SNAPSHOT</protege.version>
+        <protege.version>5.0.0-RC1-SNAPSHOT</protege.version>
 
         <!--
         The directory name for a distribution.  This is the directory that a user copies to the location
@@ -101,6 +101,7 @@
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
             <snapshots>
                 <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
     </repositories>
@@ -190,6 +191,7 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -226,7 +228,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/${os-x.directory}/${protege.directory}/plugins
+                            <outputDirectory>${project.build.directory}/${os-x.directory}/${protege.directory}/Protégé.app/Contents/Java/plugins
                             </outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
