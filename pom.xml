@@ -7,14 +7,14 @@
     <groupId>edu.stanford.protege</groupId>
     <artifactId>protege-distribution</artifactId>
     <packaging>pom</packaging>
-    <version>5.5.0</version>
+    <version>5.6.0</version>
 
     <properties>
         <!--
         The version of Protege that we are targeting.  We set this to our project version.  The two should be in sync.
         Note that we declare the oss-sonatype snapshot repository so that we can work with snapshots.
         -->
-        <protege.version>5.5.0</protege.version>
+        <protege.version>5.6.0</protege.version>
 
         <!--
         The directory name for a distribution.  This is the directory that a user copies to the location
