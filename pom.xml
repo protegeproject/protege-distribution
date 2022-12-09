@@ -228,7 +228,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/${os-x.directory}/${protege.directory}/Protégé.app/Contents/Java/plugins
+                            <outputDirectory>${project.build.directory}/${os-x.directory}/${protege.directory}/Protégé.app/Contents/plugins
                             </outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
