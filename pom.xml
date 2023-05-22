@@ -23,7 +23,7 @@
         <protege.directory>Protege-${protege.version}</protege.directory>
 
         <!-- The directory where the OS X distribution should be assembled -->
-        <os-x.directory>${protege.directory}-os-x</os-x.directory>
+        <os-x.directory>${protege.directory}-mac</os-x.directory>
 
         <!-- The directory where the Linux distribution should be assembled -->
         <linux.directory>${protege.directory}-linux</linux.directory>
@@ -223,7 +223,7 @@
                                     <groupId>edu.stanford.protege</groupId>
                                     <artifactId>protege-desktop</artifactId>
                                     <version>${protege.version}</version>
-                                    <classifier>os-x</classifier>
+                                    <classifier>mac</classifier>
                                     <type>zip</type>
                                     <outputDirectory>${project.build.directory}/${os-x.directory}</outputDirectory>
                                     <overWrite>true</overWrite>
