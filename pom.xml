@@ -186,9 +186,9 @@
         </dependency>
 
         <dependency>
-            <groupId>au.csiro</groupId>
+            <groupId>io.github.liveontologies</groupId>
             <artifactId>elk-protege</artifactId>
-            <version>0.5.0</version>
+            <version>0.6.0</version>
         </dependency>
 
         <dependency>
