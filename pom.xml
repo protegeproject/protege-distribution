@@ -191,12 +191,6 @@
             <version>0.6.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.liveontologies</groupId>
-            <artifactId>puli</artifactId>
-            <version>0.1.0</version>
-        </dependency>
-
     </dependencies>
 
 
