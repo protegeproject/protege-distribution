@@ -7,14 +7,14 @@
     <groupId>edu.stanford.protege</groupId>
     <artifactId>protege-distribution</artifactId>
     <packaging>pom</packaging>
-    <version>5.6.3</version>
+    <version>5.6.4</version>
 
     <properties>
         <!--
         The version of Protege that we are targeting.  We set this to our project version.  The two should be in sync.
         Note that we declare the oss-sonatype snapshot repository so that we can work with snapshots.
         -->
-        <protege.version>5.6.3</protege.version>
+        <protege.version>5.6.4</protege.version>
 
         <!--
         The directory name for a distribution.  This is the directory that a user copies to the location
@@ -200,8 +200,29 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.4.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-maven-version</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>3.6.3</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
+                <version>3.6.1</version>
                 <executions>
 
                     <!-- OS X -->
@@ -364,7 +385,7 @@
             <!-- Assembly plugin to produce archives for various platforms and the platform independent version -->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.5.3</version>
+                <version>3.7.1</version>
                 <configuration>
                     <finalName>${protege.directory}</finalName>
                 </configuration>
@@ -376,7 +397,9 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <descriptor>src/main/resources/os-x-assembly.xml</descriptor>
+                            <descriptors>
+                                <descriptor>src/main/resources/os-x-assembly.xml</descriptor>
+                            </descriptors>
                         </configuration>
                     </execution>
                     <execution>
@@ -386,7 +409,9 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <descriptor>src/main/resources/linux-assembly.xml</descriptor>
+                            <descriptors>
+                                <descriptor>src/main/resources/linux-assembly.xml</descriptor>
+                            </descriptors>
                         </configuration>
                     </execution>
                     <execution>
@@ -396,7 +421,9 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <descriptor>src/main/resources/win-assembly.xml</descriptor>
+                            <descriptors>
+                                <descriptor>src/main/resources/win-assembly.xml</descriptor>
+                            </descriptors>
                         </configuration>
                     </execution>
                     <execution>
@@ -406,7 +433,9 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <descriptor>src/main/resources/platform-independent-assembly.xml</descriptor>
+                            <descriptors>
+                                <descriptor>src/main/resources/platform-independent-assembly.xml</descriptor>
+                            </descriptors>
                         </configuration>
                     </execution>
                 </executions>
