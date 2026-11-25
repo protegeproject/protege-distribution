@@ -176,13 +176,13 @@
             <version>3.0.0</version>
         </dependency>
 
-        <!--
-
         <dependency>
             <groupId>edu.stanford.protege</groupId>
             <artifactId>owldoc</artifactId>
-            <version>3.0.3</version>
+            <version>4.0.0</version>
         </dependency>
+
+        <!--
 
         <dependency>
             <groupId>edu.stanford.protege</groupId>
